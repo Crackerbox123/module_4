@@ -1,6 +1,7 @@
 var taskIdCounter = 0;
 var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
+var pageContentE1 = document.querySelector("#page-content");
 
 var taskFormHandler = function (event) {
   event.preventDefault();
@@ -95,5 +96,9 @@ taskDataObj.type + "</span>";
     return actionContainerE1;
    }
 
+var taskButtonHandler = function(event) {
+  console.log(event.target);
+};
+pageContentE1.addEventListener("click", taskButtonHandler);
   
 formEl.addEventListener("submit", taskFormHandler);
