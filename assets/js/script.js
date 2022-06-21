@@ -72,7 +72,7 @@ taskDataObj.type + "</span>";
    var deleteButtonE1 = document.createElement("button");
    deleteButtonE1.textContent = "delete";
    deleteButtonE1.className = "btn delete-btn";
-   deleteButtonE1.setAttribute("dad-task-id", taskId);
+   deleteButtonE1.setAttribute("data-task-id", taskId);
    actionContainerE1.appendChild(deleteButtonE1);
    //dropdown
    var statusSelectE1 = document.createElement("select");
@@ -98,7 +98,26 @@ taskDataObj.type + "</span>";
 
 var taskButtonHandler = function(event) {
   console.log(event.target);
+
+  if (event.target.matches(".delete-btn")){
+    // get the element's task id
+    var taskId = event.target.getAttribute("data-task-id");
+  }
+  if (event.target.matches(".delete-btn")) {
+    var taskId = event.target.getAttribute("data-task-id");
+    deleteTask(taskId);
+  }
 };
+
+var deleteTask = function(taskId) {
+  var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+  taskSelected.remove();
+}
+
+
+
+
+
 pageContentE1.addEventListener("click", taskButtonHandler);
   
 formEl.addEventListener("submit", taskFormHandler);
